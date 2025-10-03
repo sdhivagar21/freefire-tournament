@@ -1,9 +1,8 @@
-// public/api.js  — robust JSON handling to avoid "JSON.parse: unexpected..."
+// public/api.js — robust JSON handling + pointing to Render backend
 
-// If you deployed the API separately on Render and are NOT using Netlify _redirects,
-// set your backend URL here, e.g.:
-// const API_BASE = 'https://YOUR-BACKEND.onrender.com';
-const API_BASE = ''; // keep '' when using same-origin or Netlify proxy
+// Using your live Render URL. If you later add a Netlify _redirects proxy,
+// change this to '' (empty string).
+const API_BASE = 'https://freefire-tournament-vz5s.onrender.com';
 
 function buildHeaders(includeAdmin = false) {
   const h = { 'Content-Type': 'application/json' };
@@ -19,7 +18,7 @@ async function parseSafe(res) {
   if (ct.includes('application/json')) {
     try { return await res.json(); } catch { return {}; }
   }
-  // Not JSON (probably an HTML 404 page) — read as text for debugging
+  // Not JSON (likely an HTML error page) — read as text for debugging
   const txt = await res.text().catch(() => '');
   return { __raw: txt };
 }
@@ -27,7 +26,6 @@ async function parseSafe(res) {
 async function handle(res, url) {
   const data = await parseSafe(res);
   if (!res.ok) {
-    // Prefer API error message if present
     const msg =
       (data && data.error) ||
       (data && data.message) ||
@@ -35,14 +33,13 @@ async function handle(res, url) {
     throw new Error(msg);
   }
   if (data && data.__raw) {
-    // Successful status but non-JSON body — still unexpected for our API
     throw new Error(`Unexpected response (not JSON) from ${url}`);
   }
   return data;
 }
 
 async function GET(url) {
-  const res = await fetch(API_BASE + url, { method: 'GET' });
+  const res = await fetch(API_BASE + url, { method: 'GET', cache: 'no-store' });
   return handle(res, url);
 }
 
