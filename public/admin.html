@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Fire — Admin</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="admin-on">
+  <header class="hdr">
+    <div class="logo">🔥 Free Fire Tournament — Admin</div>
+    <nav class="nav">
+      <a href="./index.html" class="btn ghost">Bracket</a>
+      <a href="./register.html" class="btn ghost">Register</a>
+    </nav>
+    <div class="admin-panel">
+      <input id="adminKeyInput" type="password" placeholder="Enter Admin Key" />
+      <button id="adminSetBtn" class="btn">Verify</button>
+      <span id="adminStatus" class="badge">Not Verified</span>
+    </div>
+  </header>
+
+  <main class="grid grid-single">
+    <section class="card bracket">
+      <div class="bracket-header">
+        <h2>Admin Controls</h2>
+        <div class="admin-actions">
+          <button id="startBtn" class="btn" disabled>Start Tournament</button>
+          <button id="resetBtn" class="btn warn">Reset</button>
+        </div>
+      </div>
+      <div id="bracketContainer" class="bracket-grid"></div>
+      <canvas id="confetti" class="confetti"></canvas>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script type="module" src="./api.js"></script>
+  <script type="module" src="./ui.js"></script>
+  <script type="module" src="./main-admin.js"></script>
+</body>
+</html>

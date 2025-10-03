@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Fire Tournament — Bracket</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="hdr">
+    <div class="logo">🔥 Free Fire Tournament</div>
+    <nav class="nav">
+      <a href="./register.html" class="btn ghost">Register</a>
+      <a href="./admin.html" class="btn ghost">Admin</a>
+    </nav>
+  </header>
+
+  <main class="grid grid-single">
+    <!-- HERO with video or fallback image -->
+    <section class="hero card">
+      <!-- Option A: local mp4 (put a small file in /public/assets/hero.mp4) -->
+      <video src="./assets/hero.mp4" autoplay muted loop playsinline></video>
+      <!-- Option B: fallback image (remove if you have video) -->
+      <img class="bg-img" src="./assets/hero.webp" alt="" />
+      <div class="overlay"></div>
+      <div class="content">
+        <h1>World-Class Arena. Big Plays. Big Glory.</h1>
+        <div class="sub">Watch the bracket unfold live — pairings slide in, winners glow up 🔥</div>
+        <div>
+          <a href="./register.html" class="btn">Register a Team</a>
+          <a href="#bracket" class="btn ghost">View Bracket</a>
+        </div>
+        <div class="ticker">
+          <div class="ticker-line">
+            <span>🎮 Skill. Strategy. Style.</span>
+            <span>⚡ Random BYEs keep it spicy.</span>
+            <span>🏆 One champion to rule them all.</span>
+            <span>🎮 Skill. Strategy. Style.</span>
+            <span>⚡ Random BYEs keep it spicy.</span>
+            <span>🏆 One champion to rule them all.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRACKET -->
+    <section id="bracket" class="card bracket">
+      <div class="bracket-header">
+        <h2>Spectator Bracket</h2>
+      </div>
+      <div id="bracketContainer" class="bracket-grid"></div>
+      <canvas id="confetti" class="confetti"></canvas>
+    </section>
+
+    <!-- MEDIA WALL (videos & pics) -->
+    <section class="card media-section">
+      <div class="media-title">Highlights & Vibes</div>
+      <div class="media-grid">
+<!-- YouTube (privacy-enhanced, lazy, more compatible) -->
+<div class="item">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/q55M3XtvjaQ?rel=0&modestbranding=1"
+    title="Highlights"
+    loading="lazy"
+    referrerpolicy="origin-when-cross-origin"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    frameborder="0"
+    style="width:100%; height:100%; display:block;"
+  ></iframe>
+</div>
+>
+        <!-- Local MP4 -->
+        <div class="item"><video src="./assets/highlight.mp4" controls preload="metadata"></video></div>
+        <!-- Clickable images open lightbox -->
+        <div class="item tall"><img src="./assets/moment1.jpg" alt="Moment 1" data-lightbox /></div>
+        <div class="item tall"><img src="./assets/moment2.jpg" alt="Moment 2" data-lightbox /></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <button class="btn ghost close" data-close>Close ✕</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script type="module" src="./api.js"></script>
+  <script type="module" src="./ui.js"></script>
+  <script type="module" src="./main-spectator.js"></script>
+  <script type="module" src="./media.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Fire — Register Team</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="hdr">
+    <div class="logo">🔥 Free Fire Tournament</div>
+    <nav class="nav">
+      <a href="./index.html" class="btn ghost">Bracket</a>
+      <a href="./admin.html" class="btn ghost">Admin</a>
+    </nav>
+  </header>
+
+  <main class="grid grid-single">
+    <section class="card reg">
+      <h2>Register Team</h2>
+      <form id="regForm" class="form">
+        <label>Team Name <input id="teamName" required maxlength="40" /></label>
+        <label>Number of Players (2–5)
+          <input id="numPlayers" type="number" min="2" max="5" value="2" />
+        </label>
+        <div id="playerInputs" class="players"></div>
+        <button class="btn" type="submit">Register</button>
+      </form>
+
+      <div class="divider"></div>
+
+      <h3>Teams Registered</h3>
+      <div id="teamsList" class="list empty">No teams yet—be the first!</div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script type="module" src="./api.js"></script>
+  <script type="module" src="./ui.js"></script>
+  <script type="module" src="./main-register.js"></script>
+</body>
+</html>
